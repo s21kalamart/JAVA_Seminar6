@@ -43,9 +43,10 @@ public class Grade {
 	@JoinColumn(name = "Idc") 
 	private Course course;
 
-	public Grade(int gvalue, Student student) {
+	public Grade(int gvalue, Student student, Course course) {
 		this.gvalue = gvalue;
 		this.student = student;
+		this.course = course;
 	}
 	
 }

@@ -14,6 +14,7 @@ import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 import lombok.AccessLevel;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
@@ -21,6 +22,7 @@ import lombok.ToString;
 @Entity
 @Getter
 @Setter
+@NoArgsConstructor
 @ToString
 public class Student {
 	
@@ -45,10 +47,9 @@ public class Student {
 	@OneToMany(mappedBy = "student")
 	private Collection<Grade> grades;
 
-	public Student(String name, String surname, Collection<Grade> grades) {
+	public Student(String name, String surname) {
 		this.name = name;
 		this.surname = surname;
-		this.grades = grades;
 	}
 	
 }
