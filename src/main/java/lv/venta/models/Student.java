@@ -17,7 +17,7 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
-@Table(name = "student_table")    //table in DB
+@Table(name = "student_table")
 @Entity
 @Getter
 @Setter
@@ -44,5 +44,11 @@ public class Student {
 	
 	@OneToMany(mappedBy = "student")
 	private Collection<Grade> grades;
+
+	public Student(String name, String surname, Collection<Grade> grades) {
+		this.name = name;
+		this.surname = surname;
+		this.grades = grades;
+	}
 	
 }

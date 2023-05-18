@@ -1,11 +1,14 @@
 package lv.venta.models;
 
+import java.util.Collection;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.Max;
@@ -19,7 +22,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-@Table(name = "course_table")    //table in DB
+@Table(name = "course_table")
 @Entity
 @Getter
 @Setter
@@ -47,5 +50,14 @@ public class Course {
 	@OneToOne
 	@JoinColumn(name = "Idp")
 	private Professor professor;
+	
+	@OneToMany(mappedBy = "course")
+	private Collection<Grade> grades;
+
+	public Course(String title, int creditpoints, Professor professor) {
+		this.title = title;
+		this.creditpoints = creditpoints;
+		this.professor = professor;
+	}
 	
 }

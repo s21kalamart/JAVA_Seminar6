@@ -16,7 +16,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-@Table(name = "grade_table")    //table in DB
+@Table(name = "grade_table")
 @Entity
 @Getter
 @Setter
@@ -38,5 +38,14 @@ public class Grade {
 	@ManyToOne
 	@JoinColumn(name = "Ids") 
 	private Student student;
+	
+	@ManyToOne
+	@JoinColumn(name = "Idc") 
+	private Course course;
+
+	public Grade(int gvalue, Student student) {
+		this.gvalue = gvalue;
+		this.student = student;
+	}
 	
 }
