@@ -1,5 +1,6 @@
 package lv.venta.models;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 import jakarta.persistence.Column;
@@ -49,16 +50,26 @@ public class Course {
 	
 	@ManyToMany(mappedBy = "courses")
 	@ToString.Exclude
-	private Collection<Professor> professors;
+	private Collection<Professor> professors = new ArrayList<>();
 	
 	@OneToMany(mappedBy = "course")
 	@ToString.Exclude
 	private Collection<Grade> grades;
 
-	public Course(String title, int creditpoints, Professor professor) {
+	public Course(String title, int creditpoints, ArrayList<Professor> professors) {
 		this.title = title;
 		this.creditpoints = creditpoints;
-		this.professor = professor;
+		this.professors = professors;
+	}
+	
+	public void addProfessor(Professor inputProfessor) {
+		if(!professors.contains(inputProfessor)) {
+			professors.add(inputProfessor);
+		}
+	}
+	
+	public void removeProfessor(Professor inputProfessor) {
+		professors.remove(inputProfessor);
 	}
 	
 }
