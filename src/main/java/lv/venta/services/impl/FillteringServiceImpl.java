@@ -61,7 +61,7 @@ public class FillteringServiceImpl implements IFilteringService {
 	@Override
 	public ArrayList<Course> retrieveAllCoursesByStudentId(long id) throws Exception {
 		if(id > 0) {
-			ArrayList<Course> filteredResults = courseRepo.findByGradeStudentIds(id);
+			ArrayList<Course> filteredResults = courseRepo.findByGradesStudentIds(id);
 			return filteredResults;
 		} else throw new Exception("Incorrect ID");
 	}
