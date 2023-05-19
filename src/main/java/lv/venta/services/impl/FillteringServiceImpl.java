@@ -60,20 +60,30 @@ public class FillteringServiceImpl implements IFilteringService {
 
 	@Override
 	public ArrayList<Course> retrieveAllCoursesByStudentId(long id) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		if(id > 0) {
+			ArrayList<Course> filteredResults = courseRepo.findByGradeStudentIds(id);
+			return filteredResults;
+		} else throw new Exception("Incorrect ID");
 	}
 
 	@Override
 	public ArrayList<Course> retrieveAllCoursesByProfessorId(long id) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		if(id > 0) {
+			ArrayList<Course> filteredResults = courseRepo.findAllByProfessorsIdp(id);
+			return filteredResults;
+		} else throw new Exception("Incorrect ID");
 	}
 
 	@Override
 	public float calculateAVGGradeInCourseId(long id) throws Exception {
-		// TODO Auto-generated method stub
-		return 0;
+		if(id > 0) {
+			ArrayList<Grade> filteredResults = gradeRepo.findByCourseIdc(id);
+			float sum = 0;
+			for(Grade temp : filteredResults) {
+				sum += temp.getGvalue();
+			}
+			return sum / filteredResults.size();
+		} else throw new Exception("Incorrect ID");
 	}
 	
 }
