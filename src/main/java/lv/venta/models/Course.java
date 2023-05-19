@@ -9,6 +9,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
@@ -48,7 +49,8 @@ public class Course {
 	@Max(value = 20)
 	private int creditpoints;
 	
-	@ManyToMany(mappedBy = "courses")
+	@ManyToMany
+	@JoinTable(name = "prof_course_table", joinColumns = @JoinColumn(name = "Idc"), inverseJoinColumns = @JoinColumn(name = "Idp"))
 	@ToString.Exclude
 	private Collection<Professor> professors = new ArrayList<>();
 	
