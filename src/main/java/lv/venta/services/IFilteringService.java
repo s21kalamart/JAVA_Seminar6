@@ -12,9 +12,8 @@ public interface IFilteringService {
 	ArrayList<Grade> retrieveAllGrades();
 	ArrayList<Course> retrieveAllCourses();
 	ArrayList<Professor> retrieveAllProfessors();
-	
-	ArrayList<Grade> retrieveAllGradesByStudent(long id);
-	ArrayList<Course> retrieveCoursesByStudent(Student student);
-	ArrayList<Course> retrieveCoursesByProfessor(Professor professor);
-	float calculateAVGGradeInCourse(Course course);
+	ArrayList<Grade> retrieveAllGradesByStudentId(long id);
+	ArrayList<Course> retrieveAllCoursesByStudentId(long id);
+	ArrayList<Course> retrieveAllCoursesByProfessorId(long id);
+	float calculateAVGGradeInCourseId(long id);
 }
