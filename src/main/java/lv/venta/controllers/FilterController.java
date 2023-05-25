@@ -25,4 +25,16 @@ public class FilterController {
 		return "all-professors-page";
 	}
 	
+	@GetMapping("/info/showAllGrades")
+	public String getAllGradesFunc(Model model) {
+		model.addAttribute("grades", filterService.retrieveAllGrades());
+		return "all-grades-page";
+	}
+	
+	@GetMapping("/info/showAllCourses")
+	public String getAllCoursesFunc(Model model) {
+		model.addAttribute("courses", filterService.retrieveAllCourses());
+		return "all-courses-page";
+	}
+	
 }
