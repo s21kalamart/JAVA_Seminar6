@@ -24,33 +24,14 @@ import lombok.ToString;
 @Setter
 @NoArgsConstructor
 @ToString
-public class Student {
-	
-	@Column(name = "Ids")
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Setter(value = AccessLevel.NONE)
-	private long ids;
-	
-	@Column(name = "Name")
-	@NotNull
-	@Size(min = 3, max = 20)
-	@Pattern(regexp = "[A-Z]{1}[a-z]+")
-	private String name;
-	
-	@Column(name = "Surname")
-	@NotNull
-	@Size(min = 3, max = 20)
-	@Pattern(regexp = "[A-Z]{1}[a-z]+")
-	private String surname;
+public class Student extends Person {
 	
 	@OneToMany(mappedBy = "student")
 	@ToString.Exclude
 	private Collection<Grade> grades;
 
 	public Student(String name, String surname) {
-		this.name = name;
-		this.surname = surname;
+		super(name, surname);
 	}
 	
 }
