@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import lv.venta.services.IFilteringService;
 
@@ -43,6 +44,18 @@ public class FilterController {
 		try {
 			model.addAttribute("grades", filterService.retrieveAllGradesByStudentId(id));
 			return "all-grades-page";
+		}
+		catch(Exception e) {
+			model.addAttribute("msg", e.getMessage());
+			return "error-page";
+		}
+	}
+	
+	@GetMapping("/info/showAllCourses/students")
+	public String getAllCoursesByStudentId(@RequestParam(name = "id") long id, Model model) {
+		try {
+			model.addAttribute("courses", filterService.retrieveAllCoursesByStudentId(id));
+			return "all-courses-page";
 		}
 		catch(Exception e) {
 			model.addAttribute("msg", e.getMessage());
